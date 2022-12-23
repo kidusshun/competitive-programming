@@ -11,6 +11,3 @@ class Solution:
             else:
                 lst.append(str(i))
         return lst
-new=Solution()
-
-print(new.fizzBuzz(3))
