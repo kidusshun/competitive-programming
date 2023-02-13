@@ -1,13 +1,16 @@
-def removeKdigits(num, k):
-    st = []
-    for i in num:
-        while k and len(st) > 0 and st[-1] > i:
-            k -= 1
-            st.pop()
-        st.append(i)
-    while k:
-        k -= 1
-        st.pop()
-    st = "".join(st).lstrip("0")
-    return st if st else "0"
-removeKdigits("1432219", 3)
+class Solution:
+    def removeKdigits(self, num: str, k: int) -> str:
+        stack=[]
+        for number in num:
+            while k>0 and len(stack)>0 and stack[-1]>number:
+                stack.pop()
+                k-=1
+            stack.append(number)
+        while k>0:
+            stack.pop()
+            k-=1
+        stack = "".join(stack).lstrip("0")
+        if stack:
+            return stack
+        else:
+            return "0"
