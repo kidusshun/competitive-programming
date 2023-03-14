@@ -8,7 +8,7 @@ class Solution:
         lst=[]
         for num in changed:
             if num==0 and count[num]>1:
-                count[num]-=1
+                count[num]-=2
                 lst.append(num)
             elif num > 0 and count[num] and count[num*2]:
                 count[num]-=1
