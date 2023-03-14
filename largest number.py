@@ -10,4 +10,3 @@ class Solution:
                 return 1
         nums=sorted(nums,key=functools.cmp_to_key(compare))
         return str(int("".join(nums)))
-  
