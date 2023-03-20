@@ -1,6 +1,6 @@
-import collections
-def minSetSize(arr: list[int]) -> int:
-        hashmap=collections.Counter(arr)
+class Solution:
+    def minSetSize(self, arr: List[int]) -> int:
+        hashmap=Counter(arr)
         values=list(hashmap.values())
         values.sort()
         length=len(arr)
@@ -13,4 +13,3 @@ def minSetSize(arr: list[int]) -> int:
             else:
                 return num
         return num
-print(minSetSize([3,3,3,3,5,5,5,2,2,7]))
