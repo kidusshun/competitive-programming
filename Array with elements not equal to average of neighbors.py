@@ -1,19 +1,10 @@
-import functools
-
-def avg_neighbors_cmp(a, b):
-    n = len(lst)
-    print(a,b,n)
-    avg_a = (a[(i-1)%n] + a[(i+1)%n])/2
-    avg_b = (b[(j-1)%n] + b[(j+1)%n])/2
-    if avg_a == a[i]:
-        return -1
-    elif avg_b == b[j]:
-        return 1
-    else:
-        return 0
-
-lst = [4, 2, 6, 3, 9, 5]
-
-sorted_lst = sorted(lst, key=functools.cmp_to_key(avg_neighbors_cmp))
-
-print(sorted_lst)
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+        nums.sort()
+        for i in range(1,len(nums)-1):
+            prev=nums[i-1]
+            current=nums[i]
+            next=nums[i+1]
+            if prev<current<next or next>current>prev:
+                nums[i+1], nums[i] = nums[i], nums[i+1]
+        return nums
