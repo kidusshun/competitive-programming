@@ -10,9 +10,6 @@ class Solution:
             elif s[ind2] in sub:
                 ind1+=1
                 sub=s[ind1:ind2]
-            else:
-                ind1+=1
-                ind2+=1
             if len(sub)>max:
                 max=len(sub)
         return max
