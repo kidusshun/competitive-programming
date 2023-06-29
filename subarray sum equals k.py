@@ -9,5 +9,3 @@ class Solution:
                 result = result + dict[prefix_sum-k]
             dict[prefix_sum] = dict.get(prefix_sum,0)+1
         return result
-st=[0,1,2,3,4,5]
-print(st[0:1])
