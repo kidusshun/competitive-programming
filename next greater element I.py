@@ -13,5 +13,3 @@ class Solution:
             if current in nums1:
                 stack.append(current)
         return result
-            
-nextGreaterElement([4,1,2], [1,3,4,2])

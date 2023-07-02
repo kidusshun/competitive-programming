@@ -4,7 +4,7 @@ class Solution:
         for num in asteroids:
             if len(ans) == 0:
                 ans.append(num)
-            elif ans[-1] >= num and ((num > 0 and ans[-1] < 0) or (num < 0 and ans[-1] > 0)):
+            elif abs(ans[-1]) >= abs(num) and ((num > 0 and ans[-1] < 0) or (num < 0 and ans[-1] > 0)):
                 if abs(num) >= abs(ans[-1]):
                     while len(ans)>0 and ans[-1] >= num and ((num > 0 and ans[-1] < 0) or (num < 0 and ans[-1] > 0)):
                         if abs(num) >= abs(ans[-1]):

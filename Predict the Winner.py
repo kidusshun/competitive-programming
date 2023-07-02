@@ -1,5 +1,5 @@
 class Solution:
-    def PredictTheWinner(self, nums: List[int]) -> bool:
+    def PredictTheWinner(self, nums: list[int]) -> bool:
 
         def score(left,right):
             if left > right:
@@ -12,3 +12,6 @@ class Solution:
             return max(score_left, score_right)
         
         return score(0,len(nums)-1) >= 0
+
+s = Solution()
+s.PredictTheWinner([1,5,2])
