@@ -1,22 +1,15 @@
 class Solution:
-    def minSubArrayLen(self, target: int, nums: list[int]) -> int:
-        i,j=0,1
-        new_num = nums[i:j]
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        i=0
+        sub_sum=0
         size=float('inf')
-        while j <= len(nums):
-            if sum(new_num) >= target and len(new_num)<size:
-                size=len(new_num)
-                while i < j:
-                    new_num = nums[i:j]
-                    if sum(new_num) >= target and len(new_num)<size:
-                        size=len(new_num)
-                    i+=1
+        for j in range(len(nums)):
+            sub_sum += nums[j]
+            while i <= j and sub_sum>=target:
+                if sub_sum >= target and (j-i+1)<size:
+                    size=(j-i+1)
+                sub_sum -=nums[i]
+                i+=1
         
-            j+=1
-            new_num = new_num + nums[j]
         if size == float('inf'): return 0
         return size
-
-
-s = Solution()
-s.minSubArrayLen(11, [10,5,13,4,8,4,5,11,14,9,16,10,20,8])
