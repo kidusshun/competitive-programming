@@ -1,19 +1,15 @@
 class Solution:
-    def maxTurbulenceSize(self, arr: list[int]) -> int:
-        n = len(arr)
-        l, r = 0, 0
-        ans = 1
-        if n == 1:
+    def maxTurbulenceSize(self, arr: List[int]) -> int:
+        if len(arr) == 1:
             return 1
-        while r < n:
-            while l < n - 1 and arr[l] == arr[l+1]: # to handle duplicates
-                l += 1
-            while r < n - 1 and (arr[r-1] > arr[r] < arr[r+1] or arr[r-1] < arr[r] > arr[r+1]):
-                r += 1
-            ans=max(ans, r - l + 1)
-            l = r
-            r += 1
+        i,j = 0,0
+        ans = 1
+        while j < len(arr):
+            while i < len(arr) - 1 and arr[i] == arr[i+1]: # to handle duplicates
+                i += 1
+            while j<len(arr)-1 and ((arr[j-1] > arr[j] < arr[j+1]) or (arr[j-1] < arr[j] > arr[j+1])):
+                j+=1
+            ans = max(ans,j-i+1)
+            i=j
+            j += 1
         return ans
-
-s = Solution()
-s.maxTurbulenceSize([37,199,60,296,257,248,115,31,273,176])
