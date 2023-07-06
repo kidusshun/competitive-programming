@@ -1,6 +1,5 @@
-from collections import Counter
 class Solution:
-    def findAnagrams(self, s: str, p: str) -> list[int]:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
         ans = []
         p_dict = Counter(p)
         l = 0
@@ -16,7 +15,4 @@ class Solution:
             r+=1
             l+=1
         return ans
-
-s = Solution()
-s.findAnagrams("abab", "ab")
         
