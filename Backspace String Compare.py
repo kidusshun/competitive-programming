@@ -19,6 +19,3 @@ class Solution:
                 ans2.pop()
             j+=1
         return ans1 == ans2
-        
-s = Solution()
-s.backspaceCompare("a##c", "#a#c")
