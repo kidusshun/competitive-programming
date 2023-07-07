@@ -1,20 +1,14 @@
 class Solution:
-    def asteroidCollision(self, asteroids: list[int]) -> list[int]:
-        ans=[]
-        for num in asteroids:
-            if len(ans) == 0:
-                ans.append(num)
-            elif abs(ans[-1]) >= abs(num) and ((num > 0 and ans[-1] < 0) or (num < 0 and ans[-1] > 0)):
-                if abs(num) >= abs(ans[-1]):
-                    while len(ans)>0 and ans[-1] >= num and ((num > 0 and ans[-1] < 0) or (num < 0 and ans[-1] > 0)):
-                        if abs(num) >= abs(ans[-1]):
-                            ans.pop()
-                        else:
-                            break
-                        
-                        
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        ans =[]
+        for n in asteroids:
+            if not ans or n>0:
+                ans.append(n)
             else:
-                ans.append(num)
+                while ans and n<0 and ans[-1]>0 and ans[-1] < abs(n):
+                    ans.pop()
+                if not ans or ans[-1] < 0:
+                    ans.append(n)
+                elif ans[-1] == abs(n):
+                    ans.pop()
         return ans
-s = Solution()
-s.asteroidCollision([-2,-2,1,-2])
