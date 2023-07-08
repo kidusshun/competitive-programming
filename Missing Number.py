@@ -1,9 +1,10 @@
 class Solution:
-    def missingNumber(self, nums: list[int]) -> int:
+    def missingNumber(self, nums: List[int]) -> int:
         nums.sort()
-        for i in range(len(nums)-1):
+        n = len(nums)
+        if nums[0] != 0:
+            return 0
+        for i in range(n-1):
             if nums[i+1] - nums[i] !=1:
                 return nums[i] + 1
-
-s = Solution()
-s.missingNumber([3,0,1])
+        return nums[-1] + 1
