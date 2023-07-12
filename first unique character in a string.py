@@ -2,13 +2,11 @@ class Solution:
     def firstUniqChar(self, s: str) -> int:
         ans=[]
         duplicates = set()
-        for i in s:
-            if i not in ans and i in duplicates:
-                ans.append(i)
-            elif i in ans or i in duplicates:
-                duplicates.add(i)
-                ans.remove(i)
+        for i,char in enumerate(s):
+            if char not in ans and char not in duplicates:
+                ans.append(char)
+            elif char in ans:
+                duplicates.add(char)
+                ans.remove(char)
         if len(ans) == 0: return -1
-        return s.index(ans[0])
-s = Solution()
-s.firstUniqChar('aadadaad')
+        return s.index(ans[0][0])

@@ -1,7 +1,8 @@
 class Solution:
     def countNegatives(self, grid: list[list[int]]) -> int:
+        length = len(grid)
         ans = 0
-        for lst in grid:
+        for i, lst in enumerate(grid):
             l,r = 0, len(lst)-1
 
             while l<=r:
@@ -13,8 +14,8 @@ class Solution:
                 else:
                     ans += len(lst)-mid-1
                     break
-            ans += len(lst) -mid
+            ans += (len(lst) -mid) * (length -i)
         return ans
 
 s = Solution()
-s.countNegatives([[3,2],[1,0]])
+s.countNegatives([[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]])
