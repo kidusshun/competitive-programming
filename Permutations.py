@@ -10,11 +10,7 @@ class Solution:
             self.findAllPermutations(nums, curr_permutation, visited, permutations)
             visited.remove(num)
             curr_permutation.pop()
-    def permute(self, nums: list[int]) -> list[list[int]]:
+    def permute(self, nums: List[int]) -> List[List[int]]:
         permutations = []
         self.findAllPermutations(nums,[], set(),permutations)
         return permutations
-
-
-s = Solution()
-s.permute([1,2,3])

@@ -9,11 +9,8 @@ class Solution:
         self.find_combination(i+1,nums,comb,ans,k)
         comb.pop()
         self.find_combination(i+1,nums,comb,ans,k)
-    def combine(self, n: int, k: int) -> list[list[int]]:
+    def combine(self, n: int, k: int) -> List[List[int]]:
         nums = [num for num in range(1,n+1)]
         ans = []
         self.find_combination(0, nums,[],ans, k)
         return ans
-
-s = Solution()
-s.combine(4, 2)
