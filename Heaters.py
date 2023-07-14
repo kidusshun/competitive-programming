@@ -1,21 +1,37 @@
 class Solution:
-    def findRadius(self, houses: list[int], heaters: list[int]) -> int:
-        if len(heaters) == 1:
-            target = heaters[0]
+    def findRadius(self, houses: List[int], heaters: List[int]) -> int:
+        ans = float("-inf")
+        length = len(heaters)
+        heaters.sort()
 
-            l,r = 0,len(houses) - 1
+        for house in houses:
+            current_dist = abs(self.findClosest(heaters,length,house) - house)
+            ans = max(ans, current_dist)
+        
+        return ans
+        
+    
+    def findClosest(self, heaters, length, house):
+        if house <= heaters[0]:
+            return heaters[0]
+        elif house >= heaters[-1]:
+            return heaters[-1]
+        
+        i = 0
+        j = length - 1
+        result = 0
 
-            while l <= r:
-                mid = (l+r)//2
-                if houses[mid] > target:
-                    l = mid + 1
-                elif houses[mid] < target:
-                    r = mid - 1
-                else:
-                    return houses[mid] - houses[0]
-            return max((heaters[-1] - mid), (mid - heaters[0]))
-        else:
-            return 0
+        while i <= j:
+            mid = (i+j)//2
+            if abs(heaters[mid] - house) < abs(heaters[result] - house):
+                    result = mid
 
-s = Solution()
-s.findRadius([1,2,3], [2])
+            if heaters[mid] == house:
+                return heaters[mid] 
+            
+            elif heaters[mid] < house:
+                i = mid + 1
+            elif heaters[mid] > house:
+                j = mid - 1
+        
+        return heaters[result]
