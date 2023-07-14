@@ -1,20 +1,19 @@
-def combine(n, k):   
-    sol=[]
-    def backtrack(remain,comb,nex):
-        # solution found
-        if remain==0:
-            sol.append(comb.copy())
-        else:
-            # iterate through all possible candidates
-            for i in range(nex,n+1):
-                # add candidate
-                comb.append(i)
-                #backtrack
-                backtrack(remain-1,comb,i+1)
-                # remove candidate
-                comb.pop()
-        
-    backtrack(k,[],1)
-    return sol
+class Solution:
+    def find_combination(self,i,nums,comb, ans,k):
+        if len(comb) == k:
+            ans.append(comb[:])
+            return
+        if i>=len(nums):
+            return
+        comb.append(nums[i])
+        self.find_combination(i+1,nums,comb,ans,k)
+        comb.pop()
+        self.find_combination(i+1,nums,comb,ans,k)
+    def combine(self, n: int, k: int) -> list[list[int]]:
+        nums = [num for num in range(1,n+1)]
+        ans = []
+        self.find_combination(0, nums,[],ans, k)
+        return ans
 
-combine(4, 2)
+s = Solution()
+s.combine(4, 2)
