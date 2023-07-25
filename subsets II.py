@@ -1,7 +1,10 @@
 class Solution:
-    def subsets(self, nums: List[int]) -> List[List[int]]:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         def subs(sub, k):
-            ans.append(sub.copy())
+            count = dict(Counter(sub))
+            if sub not in ans and count not in diction:
+                ans.append(sub.copy())
+                diction.append(count)
             if len(ans) == 2**length:
                 return  
             while k < length:
@@ -11,5 +14,7 @@ class Solution:
                 k+=1
         length = len(nums)
         ans = []
+        diction = []
         subs([], 0)
+        ans.sort()
         return ans
