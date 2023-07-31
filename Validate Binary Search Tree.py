@@ -6,9 +6,11 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        def traverse(root):
-            if not root:
-                return []
-            return traverse(root.left) + [root.val] + traverse(root.right)
-        traversed = traverse(root)
-        return traversed == sorted(list(set(traversed)))
+        arr = []
+        def inorder(root):
+            if root is None: return None
+            inorder(root.left)
+            arr.append(root.val)
+            inorder(root.right)
+        inorder(root)
+        return True if arr == list(sorted(set(arr))) else False
