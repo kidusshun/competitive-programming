@@ -4,8 +4,8 @@ class Solution:
         for (x,y) in points:
             dist=x**2 + y**2
             lst.append([dist,[x,y]])
-        lst.sort()
+        heapify(lst)
         closest=[]
         for i in range(k):
-            closest.append(lst[i][1])
+            closest.append(heappop(lst)[1])
         return closest
