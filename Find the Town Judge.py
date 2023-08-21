@@ -2,7 +2,7 @@ class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
         incoming = [0 for _ in range(n)]
         outgoing = [0 for _ in range(n)]
-
+        outgoing.e
         for edge in trust:
             outgoing[edge[0] - 1] +=1
             incoming[edge[1] - 1] +=1
