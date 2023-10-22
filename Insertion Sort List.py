@@ -6,15 +6,25 @@ class ListNode:
 class Solution:
     # [4,2,1,3]
     # [2,4,1,3]
+    # [1,2,4,3]
+    # [1,2,3,4]
     def insertionSortList(self, head):
-        curr = head.next
+        dummy = ListNode(0,head)
+        prev,curr =head, head.next
+
         while curr:
-            comp = head
-            while comp and curr.val > comp.val:
-                comp = comp.next
-            comp.val, curr.val = curr.val, comp.val
-            curr = curr.next
-        return head
+            if curr.val >=prev.val:
+                prev, curr = curr, curr.next
+                continue
+            
+            temp = dummy
+            while curr.val < temp.next.val:
+                temp = temp.next
+            prev.next = curr.next
+            curr.next = temp.next
+            temp.next = curr
+            curr = prev.next
+        return dummy.next
 
 a = ListNode(
     val=4,
