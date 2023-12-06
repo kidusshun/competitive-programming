@@ -1,10 +1,10 @@
 class Solution:
     def shuffle(self, nums: List[int], n: int) -> List[int]:
-        i,j =0,n
+        i =0
         shuffled_array = []
-        while j < len(nums):
+        while n < len(nums):
             shuffled_array.append(nums[i])
-            shuffled_array.append(nums[j])
+            shuffled_array.append(nums[n])
             i+=1
-            j+=1
+            n+=1
         return shuffled_array
