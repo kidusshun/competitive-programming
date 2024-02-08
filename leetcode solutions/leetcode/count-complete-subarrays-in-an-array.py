@@ -7,5 +7,6 @@ class Solution:
             for j in range(i,len(nums)):
                 seen.add(nums[j])
                 if len(seen) == distinct_nums:
-                    ans+=1
+                    ans+=len(nums) -j
+                    break
         return ans
