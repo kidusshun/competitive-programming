@@ -7,4 +7,4 @@ class Solution:
             arr.append(root.val)
             inorder(root.right)
         inorder(root)
-        return True if arr == list(sorted(set(arr))) else False
+        return True if arr == sorted(list(set(arr))) else False
